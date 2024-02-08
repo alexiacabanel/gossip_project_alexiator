@@ -9,6 +9,12 @@
 #   end
 User.destroy_all
 City.destroy_all
+Gossip.destroy_all
+Tag.destroy_all
+GossipsTag.destroy_all
+PrivateMessage.destroy_all
+Comment.destroy_all
+
 require 'faker'
 
 cities = []
@@ -35,4 +41,8 @@ end
 
 20.times do
     pm = PrivateMessage.create!(content: Faker::ChuckNorris.fact, recipient_id: User.all.shuffle.last.id, sender_id: User.all.shuffle.last.id)
+end
+
+30.times do
+  comment = Comment.create!(content: Faker::Lorem.sentence, user_id: User.all.shuffle.last.id, gossip_id: Gossip.all.shuffle.last.id  )
 end
